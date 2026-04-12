@@ -22,8 +22,11 @@ public class CreativeTabInit {
             .icon(() -> ItemInit.RAW_TITANIUM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(ItemInit.RAW_TITANIUM.get());
-                output.accept(BlockInit.EXAMPLE_BLOCK_ITEM.get());
+                output.accept(ItemInit.NUGGET_TITANIUM.get());
+                output.accept(ItemInit.INGOT_TITANIUM.get());
+                output.accept(BlockInit.BLOCK_TITANIUM_ITEM.get());
                 output.accept(BlockInit.ORE_TITANIUM_ITEM.get());
+                output.accept(BlockInit.ORE_TITANIUM_DEEPSLATE_ITEM.get());
             }).build());
 
 

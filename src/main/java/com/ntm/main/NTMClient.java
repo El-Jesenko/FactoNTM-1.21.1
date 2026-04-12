@@ -31,5 +31,6 @@ public class NTMClient {
         NTM.LOGGER.info("HELLO FROM CLIENT SETUP");
         NTM.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORE_TITANIUM.get(), RenderType.CUTOUT);
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.ORE_TITANIUM_DEEPSLATE.get(), RenderType.CUTOUT);
     }
 }

@@ -2,7 +2,11 @@
   "itemGroup.ntm": "Example Mod Tab",
   "block.ntm.example_block": "Example Block",
   "item.ntm.raw_titanium": "Raw Titanium",
+  "item.ntm.nugget_titanium": "Titanium Nugget",
+  "block.ntm.block_titanium": "Titanium Block",
+  "item.ntm.ingot_titanium": "Titanium Ingot",
   "block.ntm.ore_titanium": "Titanium Ore",
+  "block.ntm.ore_titanium_deepslate": "Deepslate Titanium Ore",
 
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",

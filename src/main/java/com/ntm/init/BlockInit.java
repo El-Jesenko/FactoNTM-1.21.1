@@ -19,9 +19,6 @@ public class BlockInit {
 
     //region BLOCKS
 
-    public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", BlockBehaviour.Properties.of().mapColor(MapColor.STONE));
-    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
-
 
     public static final DeferredBlock<Block> ORE_TITANIUM = BLOCKS.register("ore_titanium", () -> new Block(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
@@ -31,6 +28,21 @@ public class BlockInit {
             .noOcclusion()));
 
     public static final DeferredItem<BlockItem> ORE_TITANIUM_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("ore_titanium", ORE_TITANIUM);
+    public static final DeferredBlock<Block> ORE_TITANIUM_DEEPSLATE = BLOCKS.register("ore_titanium_deepslate", () -> new Block(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.DEEPSLATE)
+            .requiresCorrectToolForDrops()
+            .strength(4.0F,5.0F)
+            .sound(SoundType.DEEPSLATE)
+            .noOcclusion()));
+    public static final DeferredItem<BlockItem> ORE_TITANIUM_DEEPSLATE_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("ore_titanium_deepslate", ORE_TITANIUM_DEEPSLATE);
+
+    public static final DeferredBlock<Block> BLOCK_TITANIUM = BLOCKS.register("block_titanium", () -> new Block(BlockBehaviour.Properties.of()
+            .requiresCorrectToolForDrops()
+            .strength(4.0F,5.0F)
+            .sound(SoundType.STONE)));
+
+    public static final DeferredItem<BlockItem> BLOCK_TITANIUM_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("block_titanium", BLOCK_TITANIUM);
+
 
 
     //endregion
