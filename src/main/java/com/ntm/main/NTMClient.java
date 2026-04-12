@@ -1,6 +1,9 @@
 package com.ntm.main;
 
+import com.ntm.init.BlockInit;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -27,5 +30,6 @@ public class NTMClient {
         // Some client setup code
         NTM.LOGGER.info("HELLO FROM CLIENT SETUP");
         NTM.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.ORE_TITANIUM.get(), RenderType.CUTOUT);
     }
 }

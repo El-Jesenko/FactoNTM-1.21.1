@@ -23,6 +23,7 @@ public class CreativeTabInit {
             .displayItems((parameters, output) -> {
                 output.accept(ItemInit.RAW_TITANIUM.get());
                 output.accept(BlockInit.EXAMPLE_BLOCK_ITEM.get());
+                output.accept(BlockInit.ORE_TITANIUM_ITEM.get());
             }).build());
 
 
