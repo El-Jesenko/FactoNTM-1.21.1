@@ -1,5 +1,6 @@
 package com.ntm.init;
 
+import com.ntm.content.machine.alloy.AlloyFurnaceContent;
 import com.ntm.content.material.titanium.TitaniumContent;
 import com.ntm.content.registry.ModRegistries;
 import net.minecraft.world.item.Item;
@@ -19,7 +20,7 @@ public class ItemInit {
     public static final DeferredItem<Item> INGOT_TITANIUM = TitaniumContent.INGOT_TITANIUM;
     public static final DeferredItem<Item> NUGGET_TITANIUM = TitaniumContent.NUGGET_TITANIUM;
 
-    public static final DeferredItem<Item> INGOT_STEEL = TitaniumContent.INGOT_STEEL;
+    public static final DeferredItem<Item> INGOT_STEEL = AlloyFurnaceContent.INGOT_STEEL;
 
     //endregion
 

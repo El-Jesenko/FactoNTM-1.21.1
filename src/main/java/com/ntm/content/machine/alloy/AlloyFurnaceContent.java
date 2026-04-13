@@ -6,6 +6,7 @@ import com.ntm.content.registry.ModRegistries;
 import com.ntm.content.registry.RegistrationHelper;
 import com.ntm.menu.AlloyFurnaceMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
@@ -14,6 +15,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 public final class AlloyFurnaceContent {
+    public static final DeferredItem<Item> INGOT_STEEL = ModRegistries.ITEMS.registerSimpleItem("ingot_steel", new Item.Properties());
+
     private static final RegistrationHelper.BlockWithItem<AlloyFurnaceBlock> ALLOY_FURNACE_REG =
             RegistrationHelper.registerBlockWithItem("alloy_furnace", () -> new AlloyFurnaceBlock(BlockBehaviour.Properties.of()
                     .strength(3.5f)

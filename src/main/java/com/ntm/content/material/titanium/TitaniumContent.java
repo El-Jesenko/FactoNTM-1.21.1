@@ -14,7 +14,6 @@ public final class TitaniumContent {
     public static final DeferredItem<Item> RAW_TITANIUM = ModRegistries.ITEMS.registerSimpleItem("raw_titanium", new Item.Properties());
     public static final DeferredItem<Item> INGOT_TITANIUM = ModRegistries.ITEMS.registerSimpleItem("ingot_titanium", new Item.Properties());
     public static final DeferredItem<Item> NUGGET_TITANIUM = ModRegistries.ITEMS.registerSimpleItem("nugget_titanium", new Item.Properties());
-    public static final DeferredItem<Item> INGOT_STEEL = ModRegistries.ITEMS.registerSimpleItem("ingot_steel", new Item.Properties());
 
     private static final RegistrationHelper.BlockWithItem<Block> ORE_TITANIUM_REG = RegistrationHelper.registerBlockWithItem("ore_titanium", () ->
             new Block(BlockBehaviour.Properties.of()

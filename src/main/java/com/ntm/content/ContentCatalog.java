@@ -18,7 +18,7 @@ public final class ContentCatalog {
                 TitaniumContent.RAW_TITANIUM,
                 TitaniumContent.NUGGET_TITANIUM,
                 TitaniumContent.INGOT_TITANIUM,
-                TitaniumContent.INGOT_STEEL
+                AlloyFurnaceContent.INGOT_STEEL
         );
     }
 
@@ -63,7 +63,7 @@ public final class ContentCatalog {
                 TitaniumContent.BLOCK_TITANIUM_ITEM,
                 TitaniumContent.ORE_TITANIUM_ITEM,
                 TitaniumContent.ORE_TITANIUM_DEEPSLATE_ITEM,
-                TitaniumContent.INGOT_STEEL,
+                AlloyFurnaceContent.INGOT_STEEL,
                 AlloyFurnaceContent.ALLOY_FURNACE_ITEM
         );
     }
