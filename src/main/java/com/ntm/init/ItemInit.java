@@ -25,7 +25,7 @@ public class ItemInit {
 
     //region REGISTRY
 
-    @Deprecated(forRemoval = false)
+    @Deprecated(since = "1.0.0", forRemoval = false)
     public static void register(IEventBus eventBus)
     {
         // Deprecated shim for compatibility. Registration happens centrally through ModContent.register(...).
