@@ -28,9 +28,10 @@ public class CreativeTabInit {
     //endregion
 
 
+    @Deprecated(forRemoval = false)
     public static void register(IEventBus eventBus)
     {
-        // Registration happens centrally through ModContent.register(...)
+        // Deprecated shim for compatibility. Registration happens centrally through ModContent.register(...).
     }
 
 }

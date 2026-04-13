@@ -6,7 +6,6 @@ import com.ntm.menu.AlloyFurnaceMenu;
 import com.ntm.recipe.ModRecipes;
 import com.ntm.recipe.alloy.AlloyingRecipe;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -111,10 +110,8 @@ public class AlloyFurnaceBlockEntity extends BaseMachineBlockEntity implements M
         ItemStack first = inventory.getStackInSlot(SLOT_INPUT_1);
         ItemStack second = inventory.getStackInSlot(SLOT_INPUT_2);
         int hash = 17;
-        hash = 31 * hash + BuiltInRegistries.ITEM.getKey(first.getItem()).hashCode();
-        hash = 31 * hash + first.getCount();
-        hash = 31 * hash + BuiltInRegistries.ITEM.getKey(second.getItem()).hashCode();
-        hash = 31 * hash + second.getCount();
+        hash = 31 * hash + first.hashCode();
+        hash = 31 * hash + second.hashCode();
         return hash;
     }
 
