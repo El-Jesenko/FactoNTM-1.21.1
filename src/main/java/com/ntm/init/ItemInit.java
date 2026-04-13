@@ -16,8 +16,9 @@ public class ItemInit {
 
     public static final DeferredItem<Item> RAW_TITANIUM = ITEMS.registerSimpleItem("raw_titanium", new Item.Properties());
     public static final DeferredItem<Item> INGOT_TITANIUM = ITEMS.registerSimpleItem("ingot_titanium", new Item.Properties());
-
     public static final DeferredItem<Item> NUGGET_TITANIUM = ITEMS.registerSimpleItem("nugget_titanium", new Item.Properties());
+
+    public static final DeferredItem<Item> INGOT_STEEL = ITEMS.registerSimpleItem("ingot_steel", new Item.Properties());
 
     //endregion
 

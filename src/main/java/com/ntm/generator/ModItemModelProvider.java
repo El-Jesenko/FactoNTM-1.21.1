@@ -18,5 +18,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ItemInit.RAW_TITANIUM.get());
         basicItem(ItemInit.INGOT_TITANIUM.get());
         basicItem(ItemInit.NUGGET_TITANIUM.get());
+        basicItem(ItemInit.INGOT_STEEL.get());
     }
 }

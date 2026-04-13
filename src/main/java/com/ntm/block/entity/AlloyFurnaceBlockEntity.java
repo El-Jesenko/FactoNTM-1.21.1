@@ -133,7 +133,7 @@ public class AlloyFurnaceBlockEntity extends BlockEntity implements MenuProvider
         inventory.getStackInSlot(1).shrink(1);
         inventory.getStackInSlot(2).shrink(1);
 
-        ItemStack output = new ItemStack(ItemInit.INGOT_TITANIUM.get(), 1); // Dein Output-Item
+        ItemStack output = new ItemStack(ItemInit.INGOT_STEEL.get(), 1); // Dein Output-Item
         inventory.insertItem(3, output, false);
     }
 
