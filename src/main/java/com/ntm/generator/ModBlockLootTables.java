@@ -23,6 +23,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 this.createOreDrop(block, ItemInit.RAW_TITANIUM.get())
         );
         this.dropSelf(BlockInit.BLOCK_TITANIUM.get());
+        this.dropSelf(BlockInit.ALLOY_FURNACE.get());
     }
 
     @Override

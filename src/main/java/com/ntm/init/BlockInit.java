@@ -1,5 +1,6 @@
 package com.ntm.init;
 
+import com.ntm.block.AlloyFurnaceBlock;
 import com.ntm.main.NTM;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -43,7 +44,8 @@ public class BlockInit {
 
     public static final DeferredItem<BlockItem> BLOCK_TITANIUM_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("block_titanium", BLOCK_TITANIUM);
 
-
+    public static final DeferredBlock<Block> ALLOY_FURNACE = BLOCKS.registerBlock("alloy_furnace", AlloyFurnaceBlock::new, BlockBehaviour.Properties.of().strength(3.5f).requiresCorrectToolForDrops());
+    public static final DeferredItem<BlockItem> ALLOY_FURNACE_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("alloy_furnace", BlockInit.ALLOY_FURNACE);
 
     //endregion
 

@@ -7,6 +7,7 @@
   "item.ntm.ingot_titanium": "Titanium Ingot",
   "block.ntm.ore_titanium": "Titanium Ore",
   "block.ntm.ore_titanium_deepslate": "Deepslate Titanium Ore",
+  "block.ntm.alloy_furnace": "Alloy Furnace",
 
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",

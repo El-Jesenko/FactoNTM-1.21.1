@@ -1,8 +1,12 @@
 package com.ntm.main;
 
+import com.ntm.client.screen.AlloyFurnaceScreen;
 import com.ntm.init.BlockInit;
 import com.ntm.init.CreativeTabInit;
 import com.ntm.init.ItemInit;
+import com.ntm.init.ModBlockEntities;
+import com.ntm.menu.ModMenus;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -51,6 +55,8 @@ public class NTM {
         ItemInit.register(modEventBus);
         BlockInit.register(modEventBus);
         CreativeTabInit.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        ModMenus.MENUS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -59,7 +65,7 @@ public class NTM {
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-        NeoForge.EVENT_BUS.register(this);
+        //NeoForge.EVENT_BUS.register(this);
 
 
 
@@ -81,12 +87,14 @@ public class NTM {
         Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
     }
 
+    // Das "value = net.neoforged.api.distmarker.Dist.CLIENT" ist enorm wichtig!
+    @net.neoforged.fml.common.EventBusSubscriber(modid = MODID, value = net.neoforged.api.distmarker.Dist.CLIENT)
+    public static class ClientModEvents {
 
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        @SubscribeEvent
+        public static void registerScreens(RegisterMenuScreensEvent event) {
+            event.register(ModMenus.ALLOY_FURNACE_MENU.get(), AlloyFurnaceScreen::new);
+        }
     }
+
 }
