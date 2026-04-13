@@ -33,6 +33,7 @@ public class AlloyFurnaceBlockEntity extends BlockEntity implements MenuProvider
         }
     };
 
+    public boolean isWorking= false;
     public int progress = 0;
     public int maxProgress = 100;
     public int fuelTime = 0;
@@ -40,29 +41,32 @@ public class AlloyFurnaceBlockEntity extends BlockEntity implements MenuProvider
 
     public static final int MAX_FUEL = 20000; // Entspricht ca. 1 Lavaeimer
 
-    public final ContainerData data = new ContainerData() {
-        @Override
-        public int get(int index) {
-            return switch (index) {
-                case 0 -> progress;
-                case 1 -> maxProgress;
-                case 2 -> fuelTime;
-                case 3 -> MAX_FUEL;
-                default -> 0;
-            };
-        }
-
-        @Override
-        public void set(int index, int value) {
-            switch (index) {
-                case 0 -> progress = value;
-                case 1 -> maxProgress = value;
-                case 2 -> fuelTime = value;
+        // Deine ContainerData anpassen:
+        public final ContainerData data = new ContainerData() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> progress;
+                    case 1 -> maxProgress;
+                    case 2 -> fuelTime;
+                    case 3 -> MAX_FUEL;
+                    case 4 -> isWorking ? 1 : 0; // NEU: 1 ist true, 0 ist false
+                    default -> 0;
+                };
             }
-        }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> progress = value;
+                    case 1 -> maxProgress = value;
+                    case 2 -> fuelTime = value;
+                    case 4 -> isWorking = value > 0; // NEU
+                }
+            }
 
         @Override
-        public int getCount() { return 4; }
+        public int getCount() { return 5; }
     };
 
     public AlloyFurnaceBlockEntity(BlockPos pos, BlockState state) {
@@ -88,6 +92,7 @@ public class AlloyFurnaceBlockEntity extends BlockEntity implements MenuProvider
 
         // 2. Arbeiten (Schmelzen)
         if (hasRecipe() && fuelTime > 0) {
+            isWorking = true;
             progress++;
             fuelTime--; // Verbraucht 1 Fuel pro Tick während der Arbeit
             if (progress >= maxProgress) {
@@ -96,19 +101,20 @@ public class AlloyFurnaceBlockEntity extends BlockEntity implements MenuProvider
             }
             hasChanged = true;
         } else {
+            isWorking = false;
             if (progress > 0) {
                 progress = 0;
                 hasChanged = true;
             }
         }
 
-        // Prüfen, ob wir arbeiten
-        boolean isWorking = progress > 0;
+        // 3. BlockState updaten (Nutzt jetzt die neue isWorking Variable)
         BlockState currentState = getBlockState();
-        // Wenn der Zustand sich ändert (z.B. von "aus" auf "an"), Block updaten
         if (currentState.getValue(AlloyFurnaceBlock.LIT) != isWorking) {
             level.setBlock(getBlockPos(), currentState.setValue(AlloyFurnaceBlock.LIT, isWorking), 3);
         }
+
+        if (hasChanged) setChanged();
 
         if (hasChanged) setChanged();
     }

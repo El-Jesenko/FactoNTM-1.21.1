@@ -17,9 +17,10 @@ public class AlloyFurnaceMenu extends AbstractContainerMenu {
     // 1. Client-Konstruktor anpassen (Fügt ein leeres Array für den Client ein)
     public final ContainerData data;
 
-    // 1. Client-Konstruktor anpassen (Fügt ein leeres Array für den Client ein)
+    // Wird vom Client aufgerufen
     public AlloyFurnaceMenu(int containerId, Inventory playerInv, FriendlyByteBuf extraData) {
-        this(containerId, playerInv, playerInv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
+        // Hier hinten das SimpleContainerData von 4 auf 5 ändern!
+        this(containerId, playerInv, playerInv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(5));
     }
 
     // Wird vom Server aufgerufen
@@ -62,7 +63,7 @@ public class AlloyFurnaceMenu extends AbstractContainerMenu {
     }
 
     public boolean isCrafting() {
-        return this.data.get(0) > 0;
+        return this.data.get(4) > 0;
     }
 
     // Konstanten zur besseren Übersicht der Slot-Indexe

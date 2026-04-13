@@ -47,19 +47,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
 
     private void registerAlloyFurnace() {
-        ResourceLocation side = modLoc("machine/alloy_furnace_side_alt");
-        ResourceLocation frontOff = modLoc("machine/alloy_furnace_front_off_alt");
-        ResourceLocation frontOn = modLoc("machine/alloy_furnace_front_on_alt");
-        ResourceLocation topOff = modLoc("machine/alloy_furnace_top_off_alt");
-        ResourceLocation topOn = modLoc("machine/alloy_furnace_top_on_alt");
+        ResourceLocation side = modLoc("block/machine/alloy_furnace_side_alt");
+        ResourceLocation frontOff = modLoc("block/machine/alloy_furnace_front_off_alt");
+        ResourceLocation frontOn = modLoc("block/machine/alloy_furnace_front_on_alt");
+        ResourceLocation topOff = modLoc("block/machine/alloy_furnace_top_off_alt");
+        ResourceLocation topOn = modLoc("block/machine/alloy_furnace_top_on_alt");
 
+        // 1. Die Modelle generieren und zwischenspeichern
+        var furnaceOff = models().orientable("alloy_furnace", side, frontOff, topOff);
+        var furnaceOn = models().orientable("alloy_furnace_on", side, frontOn, topOn);
+
+        // 2. Den BlockState registrieren (drehbar + an/aus)
         horizontalBlock(BlockInit.ALLOY_FURNACE.get(), state -> {
-            boolean lit = state.getValue(BlockStateProperties.LIT);
-            if (lit) {
-                return models().orientable("alloy_furnace_on", side, frontOn, topOn);
-            } else {
-                return models().orientable("alloy_furnace", side, frontOff, topOff);
-            }
+            return state.getValue(BlockStateProperties.LIT) ? furnaceOn : furnaceOff;
         });
+        simpleBlockItem(BlockInit.ALLOY_FURNACE.get(), furnaceOff);
     }
 }

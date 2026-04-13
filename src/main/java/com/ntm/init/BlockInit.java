@@ -44,7 +44,10 @@ public class BlockInit {
 
     public static final DeferredItem<BlockItem> BLOCK_TITANIUM_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("block_titanium", BLOCK_TITANIUM);
 
-    public static final DeferredBlock<Block> ALLOY_FURNACE = BLOCKS.registerBlock("alloy_furnace", AlloyFurnaceBlock::new, BlockBehaviour.Properties.of().strength(3.5f).requiresCorrectToolForDrops());
+    public static final DeferredBlock<Block> ALLOY_FURNACE = BLOCKS.registerBlock("alloy_furnace", AlloyFurnaceBlock::new, BlockBehaviour.Properties.of()
+            .strength(3.5f)
+            .lightLevel(state -> state.hasProperty(AlloyFurnaceBlock.LIT) && state.getValue(AlloyFurnaceBlock.LIT) ? 13 : 0) // Gibt Level 13 aus, wenn an
+            .requiresCorrectToolForDrops());
     public static final DeferredItem<BlockItem> ALLOY_FURNACE_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("alloy_furnace", BlockInit.ALLOY_FURNACE);
 
     //endregion
