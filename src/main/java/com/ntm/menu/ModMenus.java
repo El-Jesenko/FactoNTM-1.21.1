@@ -1,15 +1,13 @@
 package com.ntm.menu;
 
-import net.minecraft.core.registries.Registries;
+import com.ntm.content.machine.alloy.AlloyFurnaceContent;
+import com.ntm.content.registry.ModRegistries;
 import net.minecraft.world.inventory.MenuType;
-import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.Supplier;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ModMenus {
-    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, "ntm");
+    public static final DeferredRegister<MenuType<?>> MENUS = ModRegistries.MENUS;
 
-    public static final Supplier<MenuType<AlloyFurnaceMenu>> ALLOY_FURNACE_MENU = MENUS.register("alloy_furnace_menu",
-            () -> IMenuTypeExtension.create(AlloyFurnaceMenu::new));
+    public static final DeferredHolder<MenuType<?>, MenuType<AlloyFurnaceMenu>> ALLOY_FURNACE_MENU = AlloyFurnaceContent.ALLOY_FURNACE_MENU;
 }

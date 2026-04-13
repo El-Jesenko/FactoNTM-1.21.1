@@ -1,6 +1,7 @@
 package com.ntm.world.feature;
 
 import com.ntm.init.BlockInit;
+import com.ntm.main.NTM;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -15,7 +16,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import java.util.List;
 
 public class ModConfiguredFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TITANIUM_ORE_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("ntm", "ore_titanium"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TITANIUM_ORE_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(NTM.MODID, "ore_titanium"));
 
 
 

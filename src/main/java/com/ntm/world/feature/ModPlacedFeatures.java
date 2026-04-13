@@ -1,5 +1,6 @@
 package com.ntm.world.feature;
 
+import com.ntm.main.NTM;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -12,7 +13,7 @@ import java.util.List;
 import static com.ntm.world.feature.ModConfiguredFeatures.TITANIUM_ORE_KEY;
 
 public class ModPlacedFeatures {
-    public static final ResourceKey<PlacedFeature> TITANIUM_ORE_PLACED_KEY = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath("ntm", "ore_titanium_placed"));
+    public static final ResourceKey<PlacedFeature> TITANIUM_ORE_PLACED_KEY = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(NTM.MODID, "ore_titanium_placed"));
 
     public static void bootstrapPlaced(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);

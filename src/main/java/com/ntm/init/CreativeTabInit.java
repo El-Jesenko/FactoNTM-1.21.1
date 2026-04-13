@@ -1,7 +1,7 @@
 package com.ntm.init;
 
-import com.ntm.main.NTM;
-import net.minecraft.core.registries.Registries;
+import com.ntm.content.ContentCatalog;
+import com.ntm.content.registry.ModRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 
 public class CreativeTabInit {
-    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, NTM.MODID);
+    public static final DeferredRegister<CreativeModeTab> TABS = ModRegistries.TABS;
 
     //region CREATIVE-TABS
 
@@ -21,14 +21,7 @@ public class CreativeTabInit {
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> ItemInit.RAW_TITANIUM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(ItemInit.RAW_TITANIUM.get());
-                output.accept(ItemInit.NUGGET_TITANIUM.get());
-                output.accept(ItemInit.INGOT_TITANIUM.get());
-                output.accept(BlockInit.BLOCK_TITANIUM_ITEM.get());
-                output.accept(BlockInit.ORE_TITANIUM_ITEM.get());
-                output.accept(BlockInit.ORE_TITANIUM_DEEPSLATE_ITEM.get());
-                output.accept(ItemInit.INGOT_STEEL.get());
-                output.accept(BlockInit.ALLOY_FURNACE_ITEM.get());
+                ContentCatalog.creativeTabEntries().forEach(entry -> output.accept(entry.get()));
             }).build());
 
 
@@ -37,7 +30,7 @@ public class CreativeTabInit {
 
     public static void register(IEventBus eventBus)
     {
-        TABS.register(eventBus);
+        // Registration happens centrally through ModContent.register(...)
     }
 
 }

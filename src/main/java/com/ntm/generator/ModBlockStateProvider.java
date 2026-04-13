@@ -1,6 +1,9 @@
 package com.ntm.generator;
 
+import com.ntm.content.ContentCatalog;
 import com.ntm.init.BlockInit;
+import com.ntm.main.NTM;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -11,13 +14,12 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 public class ModBlockStateProvider extends BlockStateProvider {
 
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, "ntm", exFileHelper); // "ntm" ist deine Mod-ID
+        super(output, NTM.MODID, exFileHelper);
     }
 
     @Override
     protected void registerStatesAndModels() {
-        // 1. Normales Titanium (Standard-Würfel)
-        simpleBlockWithItem(BlockInit.BLOCK_TITANIUM.get(), models().cubeAll("block_titanium", modLoc("block/block_titanium")));
+        ContentCatalog.storageBlocks().forEach(block -> simpleBlockWithItem(block.get(), cubeAllFor(block.get())));
 
         BlockModelBuilder ore_titanium = models().withExistingParent("ore_titanium", mcLoc("block/block"))
                 .texture("particle", "minecraft:block/stone")
@@ -28,11 +30,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(BlockInit.ORE_TITANIUM.get(), ore_titanium);
 
-        // 2. Deepslate Titanium (Dein exaktes, komplexes Layer-JSON)
-        // Ersetze diese Zeile:
-// BlockModelBuilder deepslateModel = models().getBuilder("ore_titanium_deepslate")
-
-// Durch diese:
         BlockModelBuilder ore_titanium_deepslate = models().withExistingParent("ore_titanium_deepslate", mcLoc("block/block"))
                 .texture("particle", "minecraft:block/deepslate")
                 .texture("all", "minecraft:block/deepslate")
@@ -45,6 +42,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     }
 
+    private BlockModelBuilder cubeAllFor(net.minecraft.world.level.block.Block block) {
+        String id = BuiltInRegistries.BLOCK.getKey(block).getPath();
+        return models().cubeAll(id, modLoc("block/" + id));
+    }
 
     private void registerAlloyFurnace() {
         ResourceLocation side = modLoc("block/machine/alloy_furnace_side_alt");

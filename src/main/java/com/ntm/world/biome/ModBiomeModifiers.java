@@ -1,5 +1,6 @@
 package com.ntm.world.biome;
 
+import com.ntm.main.NTM;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -14,7 +15,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import static com.ntm.world.feature.ModPlacedFeatures.TITANIUM_ORE_PLACED_KEY;
 
 public class ModBiomeModifiers {
-    public static final ResourceKey<BiomeModifier> ADD_TITANIUM_ORE = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath("ntm", "add_titanium_ore"));
+    public static final ResourceKey<BiomeModifier> ADD_TITANIUM_ORE = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(NTM.MODID, "add_titanium_ore"));
 
     public static void bootstrapBiomes(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);

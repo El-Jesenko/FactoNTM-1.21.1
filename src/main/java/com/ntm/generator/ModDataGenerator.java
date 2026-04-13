@@ -1,5 +1,6 @@
 package com.ntm.generator;
 
+import com.ntm.main.NTM;
 import com.ntm.world.biome.ModBiomeModifiers;
 import com.ntm.world.feature.ModConfiguredFeatures;
 import com.ntm.world.feature.ModPlacedFeatures;
@@ -20,8 +21,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-// Wichtig: Ersetze "ntm" mit deiner exakten Mod-ID, falls sie anders lautet
-@EventBusSubscriber(modid = "ntm")
+@EventBusSubscriber(modid = NTM.MODID)
 public class ModDataGenerator {
 
     @SubscribeEvent
@@ -53,7 +53,7 @@ public class ModDataGenerator {
 // WorldGen Provider hinzufügen
         generator.addProvider(
                 event.includeServer(),
-                new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, builder, Set.of("ntm"))
+                new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, builder, Set.of(NTM.MODID))
         );
         ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(packOutput, event.getLookupProvider(), event.getExistingFileHelper());
         generator.addProvider(event.includeServer(), blockTagsProvider);

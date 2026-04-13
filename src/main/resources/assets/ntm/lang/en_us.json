@@ -1,6 +1,5 @@
 {
-  "itemGroup.ntm": "Example Mod Tab",
-  "block.ntm.example_block": "Example Block",
+  "itemGroup.ntm": "NTM",
   "item.ntm.raw_titanium": "Raw Titanium",
   "item.ntm.nugget_titanium": "Titanium Nugget",
   "block.ntm.block_titanium": "Titanium Block",
@@ -8,12 +7,11 @@
   "block.ntm.ore_titanium": "Titanium Ore",
   "block.ntm.ore_titanium_deepslate": "Deepslate Titanium Ore",
   "block.ntm.alloy_furnace": "Alloy Furnace",
-
-  "examplemod.configuration.title": "Example Mod Configs",
-  "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
-  "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
-  "examplemod.configuration.items": "Item List",
-  "examplemod.configuration.logDirtBlock": "Log Dirt Block",
-  "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
-  "examplemod.configuration.magicNumber": "Magic Number"
+  "ntm.configuration.title": "NTM Config",
+  "ntm.configuration.section.ntm.common.toml": "NTM Config",
+  "ntm.configuration.section.ntm.common.toml.title": "NTM Config",
+  "ntm.configuration.enableDebugLogs": "Enable Debug Logs",
+  "ntm.configuration.defaultMachineProcessTime": "Default Machine Process Time",
+  "ntm.configuration.debugLogPrefix": "Debug Log Prefix",
+  "ntm.configuration.items": "Debug Item IDs"
 }

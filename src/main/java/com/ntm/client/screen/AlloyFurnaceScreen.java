@@ -1,5 +1,6 @@
 package com.ntm.client.screen;
 
+import com.ntm.main.NTM;
 import com.ntm.menu.AlloyFurnaceMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -8,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class AlloyFurnaceScreen extends AbstractContainerScreen<AlloyFurnaceMenu> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("ntm", "textures/gui/alloy_furnace.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(NTM.MODID, "textures/gui/alloy_furnace.png");
 
     public AlloyFurnaceScreen(AlloyFurnaceMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);

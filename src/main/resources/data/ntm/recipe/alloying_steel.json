@@ -1,0 +1,14 @@
+{
+  "type": "ntm:alloying",
+  "first": {
+    "item": "minecraft:iron_ingot"
+  },
+  "second": {
+    "item": "minecraft:coal"
+  },
+  "result": {
+    "id": "ntm:ingot_steel",
+    "count": 1
+  },
+  "ticks": 100
+}

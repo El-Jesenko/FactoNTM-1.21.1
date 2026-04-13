@@ -1,4 +1,5 @@
 package com.ntm.generator;
+import com.ntm.content.ContentCatalog;
 import com.ntm.init.BlockInit;
 import com.ntm.init.ItemInit;
 import net.minecraft.core.HolderLookup;
@@ -15,15 +16,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        // Diese EINE Zeile generiert dein komplettes, komplexes JSON!
-        this.add(BlockInit.ORE_TITANIUM.get(), block ->
-                this.createOreDrop(block, ItemInit.RAW_TITANIUM.get())
-        );
-        this.add(BlockInit.ORE_TITANIUM_DEEPSLATE.get(), block ->
-                this.createOreDrop(block, ItemInit.RAW_TITANIUM.get())
-        );
-        this.dropSelf(BlockInit.BLOCK_TITANIUM.get());
-        this.dropSelf(BlockInit.ALLOY_FURNACE.get());
+        ContentCatalog.oreBlocks().forEach(ore -> this.add(ore.get(), block -> this.createOreDrop(block, ItemInit.RAW_TITANIUM.get())));
+        ContentCatalog.storageBlocks().forEach(block -> this.dropSelf(block.get()));
+        ContentCatalog.machineBlocks().forEach(block -> this.dropSelf(block.get()));
     }
 
     @Override
