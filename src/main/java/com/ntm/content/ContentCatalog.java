@@ -3,7 +3,7 @@ package com.ntm.content;
 import com.ntm.content.machine.alloy.AlloyFurnaceContent;
 import com.ntm.content.material.titanium.TitaniumContent;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemLike;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
 import java.util.List;
