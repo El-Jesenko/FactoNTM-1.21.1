@@ -1,6 +1,7 @@
 package com.ntm.init;
 
 import com.ntm.block.entity.AlloyFurnaceBlockEntity;
+import com.ntm.block.entity.PressBlockEntity;
 import com.ntm.init.BlockInit;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -14,4 +15,9 @@ public class ModBlockEntities {
 
     public static final Supplier<BlockEntityType<AlloyFurnaceBlockEntity>> ALLOY_FURNACE_BE = BLOCK_ENTITIES.register("alloy_furnace",
             () -> BlockEntityType.Builder.of(AlloyFurnaceBlockEntity::new, BlockInit.ALLOY_FURNACE.get()).build(null));
+
+    public static final Supplier<BlockEntityType<PressBlockEntity>> PRESS_BE = BLOCK_ENTITIES.register("press",
+            () -> BlockEntityType.Builder.of(PressBlockEntity::new, BlockInit.PRESS.get()).build(null));
+
+
 }

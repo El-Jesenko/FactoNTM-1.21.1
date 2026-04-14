@@ -1,6 +1,7 @@
 package com.ntm.init;
 
 import com.ntm.block.AlloyFurnaceBlock;
+import com.ntm.block.PressBlock;
 import com.ntm.main.NTM;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -49,6 +50,14 @@ public class BlockInit {
             .lightLevel(state -> state.hasProperty(AlloyFurnaceBlock.LIT) && state.getValue(AlloyFurnaceBlock.LIT) ? 13 : 0) // Gibt Level 13 aus, wenn an
             .requiresCorrectToolForDrops());
     public static final DeferredItem<BlockItem> ALLOY_FURNACE_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("alloy_furnace", BlockInit.ALLOY_FURNACE);
+
+
+    public static final DeferredBlock<Block> PRESS = BLOCKS.registerBlock("press", PressBlock::new, BlockBehaviour.Properties.of()
+            .strength(3.5f)
+            .requiresCorrectToolForDrops());
+
+    public static final DeferredItem<BlockItem> PRESS_ITEM = ItemInit.ITEMS.registerSimpleBlockItem("press", BlockInit.PRESS);
+
 
     //endregion
 

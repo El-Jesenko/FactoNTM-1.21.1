@@ -1,0 +1,9 @@
+{
+  "loader": "neoforge:obj",
+  "model": "ntm:block/press_body.obj",
+  "flip_v": true,
+  "textures": {
+    "default": "ntm:block/press_body",
+    "particle": "ntm:block/press_body"
+  }
+}

@@ -35,6 +35,7 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 }
 
 base {
@@ -130,7 +131,7 @@ dependencies {
     // JEI API für die Kompilierung (wird nicht mit in die Mod-Datei gepackt)
     compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
-
+    implementation 'software.bernie.geckolib:geckolib-neoforge-1.21.1:4.6.6'
     // JEI zur Laufzeit (nur für den Test-Client in IntelliJ/Eclipse)
     localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
 

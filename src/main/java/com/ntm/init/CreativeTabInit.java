@@ -29,6 +29,7 @@ public class CreativeTabInit {
                 output.accept(BlockInit.ORE_TITANIUM_DEEPSLATE_ITEM.get());
                 output.accept(ItemInit.INGOT_STEEL.get());
                 output.accept(BlockInit.ALLOY_FURNACE_ITEM.get());
+                output.accept(BlockInit.PRESS_ITEM.get());
             }).build());
 
 
