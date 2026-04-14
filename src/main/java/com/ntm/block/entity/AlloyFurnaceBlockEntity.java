@@ -3,7 +3,10 @@ package com.ntm.block.entity;
 import com.ntm.block.AlloyFurnaceBlock;
 import com.ntm.init.ItemInit;
 import com.ntm.init.ModBlockEntities;
+import com.ntm.init.RecipeInit;
 import com.ntm.menu.AlloyFurnaceMenu;
+import com.ntm.recipe.AlloyFurnaceRecipe;
+import com.ntm.recipe.AlloyRecipeInput;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -12,6 +15,7 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,6 +25,8 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 
 public class AlloyFurnaceBlockEntity extends BlockEntity implements MenuProvider {
@@ -112,29 +118,46 @@ public class AlloyFurnaceBlockEntity extends BlockEntity implements MenuProvider
         BlockState currentState = getBlockState();
         if (currentState.getValue(AlloyFurnaceBlock.LIT) != isWorking) {
             level.setBlock(getBlockPos(), currentState.setValue(AlloyFurnaceBlock.LIT, isWorking), 3);
+            hasChanged = true; // State-Change bedeutet auch NBT-Change!
         }
 
-        if (hasChanged) setChanged();
-
-        if (hasChanged) setChanged();
+        if (hasChanged) setChanged(); // Nur noch EINMAL aufrufen
     }
 
-    // Platzhalter-Rezept: 1 Eisen + 1 Kohle = 1 Titanium Ingot
+    // 1. Sucht das passende Rezept
+    private Optional<RecipeHolder<AlloyFurnaceRecipe>> getCurrentRecipe() {
+        if (level == null) return Optional.empty();
+        AlloyRecipeInput input = new AlloyRecipeInput(inventory.getStackInSlot(1), inventory.getStackInSlot(2));
+        return level.getRecipeManager().getRecipeFor(RecipeInit.ALLOY_TYPE.get(), input, level);
+    }
+
+    // 2. Prüft, ob das Rezept gültig ist und Platz hat
     private boolean hasRecipe() {
-        boolean hasInput1 = inventory.getStackInSlot(1).is(Items.IRON_INGOT);
-        boolean hasInput2 = inventory.getStackInSlot(2).is(Items.COAL);
+        Optional<RecipeHolder<AlloyFurnaceRecipe>> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) return false;
+
+        ItemStack result = recipe.get().value().getResultItem(level.registryAccess());
         ItemStack outputSlot = inventory.getStackInSlot(3);
 
-        // Prüfen, ob Inputs stimmen UND Output leer ist (oder Platz hat)
-        return hasInput1 && hasInput2 && (outputSlot.isEmpty() || outputSlot.getCount() < outputSlot.getMaxStackSize());
+        return outputSlot.isEmpty() || (ItemStack.isSameItemSameComponents(outputSlot, result) && outputSlot.getCount() + result.getCount() <= outputSlot.getMaxStackSize());
     }
 
+    // 3. Führt das Crafting aus
     private void craftItem() {
+        Optional<RecipeHolder<AlloyFurnaceRecipe>> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) return;
+
+        ItemStack result = recipe.get().value().getResultItem(level.registryAccess());
+
         inventory.getStackInSlot(1).shrink(1);
         inventory.getStackInSlot(2).shrink(1);
 
-        ItemStack output = new ItemStack(ItemInit.INGOT_STEEL.get(), 1); // Dein Output-Item
-        inventory.insertItem(3, output, false);
+        ItemStack outputSlot = inventory.getStackInSlot(3);
+        if (outputSlot.isEmpty()) {
+            inventory.setStackInSlot(3, result.copy());
+        } else {
+            outputSlot.grow(result.getCount());
+        }
     }
 
     @Override
@@ -155,6 +178,7 @@ public class AlloyFurnaceBlockEntity extends BlockEntity implements MenuProvider
         tag.putInt("progress", progress);
         tag.putInt("fuelTime", fuelTime);
         tag.putInt("maxFuelTime", maxFuelTime);
+        tag.putBoolean("isWorking", isWorking); // WICHTIG: Status speichern
     }
 
     @Override
@@ -164,5 +188,6 @@ public class AlloyFurnaceBlockEntity extends BlockEntity implements MenuProvider
         progress = tag.getInt("progress");
         fuelTime = tag.getInt("fuelTime");
         maxFuelTime = tag.getInt("maxFuelTime");
+        isWorking = tag.getBoolean("isWorking"); // WICHTIG: Status laden
     }
 }

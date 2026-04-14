@@ -1,10 +1,7 @@
 package com.ntm.main;
 
 import com.ntm.client.screen.AlloyFurnaceScreen;
-import com.ntm.init.BlockInit;
-import com.ntm.init.CreativeTabInit;
-import com.ntm.init.ItemInit;
-import com.ntm.init.ModBlockEntities;
+import com.ntm.init.*;
 import com.ntm.menu.ModMenus;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
@@ -57,6 +54,8 @@ public class NTM {
         CreativeTabInit.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
+        RecipeInit.TYPES.register(modEventBus);
+        RecipeInit.SERIALIZERS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

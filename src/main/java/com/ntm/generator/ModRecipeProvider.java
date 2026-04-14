@@ -2,9 +2,13 @@ package com.ntm.generator;
 
 import com.ntm.init.BlockInit;
 import com.ntm.init.ItemInit;
+import com.ntm.recipe.AlloyFurnaceRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.concurrent.CompletableFuture;
@@ -74,5 +78,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_ingot", has(ItemInit.INGOT_TITANIUM.get()))
                 .save(output, "ntm:titanium_nuggets_from_ingot");
 
+
+        AlloyFurnaceRecipe steelRecipe = new AlloyFurnaceRecipe(
+                Ingredient.of(Items.IRON_INGOT),
+                Ingredient.of(Items.COAL),
+                new ItemStack(ItemInit.INGOT_STEEL.get(), 1)
+        );
+
+        // 2. Rezept ausgeben (Name der generierten JSON-Datei: "steel_ingot.json")
+        output.accept(ResourceLocation.fromNamespaceAndPath("ntm", "steel_ingot"), steelRecipe, null);
     }
 }

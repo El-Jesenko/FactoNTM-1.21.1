@@ -3,11 +3,12 @@
   "block.ntm.example_block": "Example Block",
   "item.ntm.raw_titanium": "Raw Titanium",
   "item.ntm.nugget_titanium": "Titanium Nugget",
-  "block.ntm.block_titanium": "Titanium Block",
+  "block.ntm.block_titanium": "Block of Titanium",
   "item.ntm.ingot_titanium": "Titanium Ingot",
   "block.ntm.ore_titanium": "Titanium Ore",
   "block.ntm.ore_titanium_deepslate": "Deepslate Titanium Ore",
   "block.ntm.alloy_furnace": "Alloy Furnace",
+  "item.ntm.ingot_steel": "Steel Ingot",
 
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
