@@ -1,6 +1,6 @@
 {
   "loader": "neoforge:obj",
-  "model": "ntm:block/press_head.obj",
+  "model": "ntm:models/block/press_head.obj",
   "flip_v": true,
   "textures": {
     "default": "ntm:block/press_head",
