@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "ntm:block/press_body"
+      "model": "ntm:block/press"
     }
   }
 }
