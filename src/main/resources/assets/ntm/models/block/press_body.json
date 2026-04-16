@@ -1,5 +1,5 @@
 {
-  "loader": "neoforge:obj",
+  "loader": "forge:obj",
   "model": "ntm:models/block/press_body.obj",
   "flip_v": true,
   "textures": {
