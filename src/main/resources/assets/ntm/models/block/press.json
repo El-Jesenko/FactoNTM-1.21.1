@@ -1,11 +1,11 @@
 {
-  "loader": "neoforge:composite",
+  "loader": "forge:composite",
   "textures": {
     "particle": "ntm:block/press_body"
   },
   "children": {
     "body": {
-      "loader": "neoforge:obj",
+      "loader": "forge:obj",
       "model": "ntm:models/block/press_body.obj",
       "flip_v": true,
       "textures": {
@@ -14,7 +14,7 @@
       }
     },
     "head": {
-      "loader": "neoforge:obj",
+      "loader": "forge:obj",
       "model": "ntm:models/block/press_head.obj",
       "flip_v": true,
       "textures": {
