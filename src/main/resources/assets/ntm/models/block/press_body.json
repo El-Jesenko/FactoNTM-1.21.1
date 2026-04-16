@@ -3,7 +3,7 @@
   "model": "ntm:models/block/press_body.obj",
   "flip_v": true,
   "textures": {
-    "default": "ntm:block/press_body",
+    "#None": "minecraft:block/cobblestone",
     "particle": "ntm:block/press_body"
   }
 }
