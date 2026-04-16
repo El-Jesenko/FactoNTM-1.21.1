@@ -1,9 +1,12 @@
 package com.ntm.main;
 
 import com.ntm.init.BlockInit;
+import com.ntm.init.ModBlockEntities;
+import com.ntm.renderer.PressRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
@@ -35,6 +38,7 @@ public class NTMClient {
         NTM.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORE_TITANIUM.get(), RenderType.CUTOUT);
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORE_TITANIUM_DEEPSLATE.get(), RenderType.CUTOUT);
+        BlockEntityRenderers.register(ModBlockEntities.PRESS_BE.get(), PressRenderer::new);
 
     }
 

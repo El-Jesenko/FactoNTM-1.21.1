@@ -1,0 +1,26 @@
+{
+  "loader": "neoforge:composite",
+  "textures": {
+    "particle": "ntm:block/press_body"
+  },
+  "children": {
+    "body": {
+      "loader": "neoforge:obj",
+      "model": "ntm:models/block/press_body.obj",
+      "flip_v": true,
+      "textures": {
+        "default": "ntm:block/press_body",
+        "particle": "ntm:block/press_body"
+      }
+    },
+    "head": {
+      "loader": "neoforge:obj",
+      "model": "ntm:models/block/press_head.obj",
+      "flip_v": true,
+      "textures": {
+        "default": "ntm:block/press_head",
+        "particle": "ntm:block/press_head"
+      }
+    }
+  }
+}
