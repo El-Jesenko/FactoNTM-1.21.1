@@ -1,4 +1,4 @@
-package com.ntm.client.render;
+package com.ntm.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.ntm.block.entity.PressBlockEntity;
@@ -33,10 +33,10 @@ public class PressRenderer implements BlockEntityRenderer<PressBlockEntity> {
 
         poseStack.translate(0, -offset, 0);
 
-        Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(
-                poseStack.last(), buffer.getBuffer(RenderType.cutout()),
-                null, headModel, 1.0F, 1.0F, 1.0F, packedLight, packedOverlay
-        );
+        //Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(
+        //        poseStack.last(), buffer.getBuffer(RenderType.cutout()),
+        //        null, headModel, 1.0F, 1.0F, 1.0F, packedLight, packedOverlay
+        //);
 
         poseStack.popPose();
     }
